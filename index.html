@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qiuQ | Web Design, Mobile Apps & Business Automation | Lagos & London</title>
+    <meta name="description" content="qiuQ is a creative digital agency based in Lagos & London. We build websites, mobile apps, and automation systems that solve real business problems for startups and enterprises.">
+    <meta name="keywords" content="web design, mobile app development, business automation, digital agency, Lagos, London, UI/UX, e-commerce, SaaS, workflow automation">
+    <meta name="author" content="qiuQ">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://qiuq.dev/">
+    <meta property="og:title" content="qiuQ | Web Design, Mobile Apps & Business Automation">
+    <meta property="og:description" content="Creative digital agency based in Lagos & London. We build websites, mobile apps, and automation systems.">
+    <meta property="og:url" content="https://qiuq.dev/">
+    <meta property="og:site_name" content="qiuQ">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="qiuQ | Web Design, Mobile Apps & Business Automation">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://qiuq.dev/#org","name":"qiuQ","url":"https://qiuq.dev/","logo":"https://qiuq.dev/Logo%20(2).png","description":"Creative digital agency based in Lagos & London specializing in web design, mobile apps, and business automation.","address":[{"@type":"PostalAddress","addressLocality":"Lagos","addressCountry":"NG"},{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"}],"sameAs":["https://twitter.com/qiuqdev","https://www.instagram.com/qiuqdev","https://www.linkedin.com/company/qiuqdev"]},{"@type":"WebSite","@id":"https://qiuq.dev/#web","url":"https://qiuq.dev/","name":"qiuQ"},{"@type":"WebPage","@id":"https://qiuq.dev/#page","url":"https://qiuq.dev/","name":"qiuQ | Web Design, Mobile Apps & Business Automation","isPartOf":{"@id":"https://qiuq.dev/#web"}}]}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #f2ece1; --bg2: #e8dfd1; --bg3: #d9cfc0;
+            --text: #2a1f14; --text2: #6b5d4f; --text3: #8c7e6f;
+            --accent: #b54a1f; --accent2: #9a3e18;
+            --border: rgba(42,31,20,0.1); --border2: rgba(42,31,20,0.25);
+            --sans: 'Inter', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+            --shadow-sm: 0 2px 8px rgba(42,31,20,0.1);
+            --shadow-md: 0 8px 30px rgba(42,31,20,0.12);
+            --shadow-lg: 0 20px 60px rgba(42,31,20,0.15);
+            --shadow-glow: 0 8px 40px rgba(181,74,31,0.2);
+            --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); background: linear-gradient(160deg, #f2ece1 0%, #ede4d5 25%, #f0e8da 50%, #e5dbc9 75%, #ebe1d2 100%); background-attachment: fixed; color: var(--text); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+        /* ===== NOISE ===== */
+        body::before { content: ''; position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 200px; }
+
+        /* ===== LOADER ===== */
+        .loader { position: fixed; inset: 0; background: var(--bg); display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s, visibility 0.6s; }
+        .loader.hidden { opacity: 0; visibility: hidden; }
+        .loader-inner { font-family: var(--mono); font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); animation: glitchLoad 0.3s ease infinite alternate; }
+        .loader-inner span { color: var(--accent); }
+        @keyframes glitchLoad { 0% { text-shadow: 2px 0 #b54a1f, -2px 0 #6b5d4f; } 100% { text-shadow: -2px 0 #b54a1f, 2px 0 #6b5d4f; } }
+
+        /* ===== NAVBAR ===== */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.7rem 2rem; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(24px); background: rgba(242,236,225,0.92); border-bottom: 1px solid rgba(42,31,20,0.06); transform: translateY(-100%); transition: transform 0.4s, box-shadow 0.3s; }
+        .nav.visible { transform: translateY(0); }
+        .nav.scrolled { box-shadow: 0 4px 30px rgba(42,31,20,0.08); }
+        .nav-logo { display: flex; align-items: center; text-decoration: none; }
+        .nav-logo img { height: 40px; width: auto; object-fit: contain; }
+        .nav-links { display: flex; gap: 1.8rem; align-items: center; list-style: none; }
+        .nav-links a { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text2); text-decoration: none; transition: color 0.3s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s var(--ease); }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 0.55rem 1.3rem; border-radius: 6px; font-weight: 600; transition: all 0.3s var(--ease) !important; }
+        .nav-cta:hover { background: var(--accent) !important; transform: translateY(-2px) !important; box-shadow: var(--shadow-glow); }
+        .nav-cta::after { display: none !important; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; }
+        .hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+        .mobile-menu { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 2rem; opacity: 0; visibility: hidden; transition: all 0.3s; }
+        .mobile-menu.open { opacity: 1; visibility: visible; }
+        .mobile-menu a { font-family: var(--mono); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); text-decoration: none; transition: color 0.3s; }
+        .mobile-menu a:hover { color: var(--accent); }
+
+        /* ===== TORN PAPER ===== */
+        .torn-top { position: relative; }
+        .torn-top::before { content: ''; position: absolute; top: -2px; left: -1%; right: -1%; height: 40px; background: var(--bg); clip-path: polygon(0% 100%,2% 60%,4% 90%,6% 50%,8% 80%,10% 40%,12% 75%,14% 55%,16% 85%,18% 45%,20% 70%,22% 35%,24% 80%,26% 50%,28% 90%,30% 40%,32% 75%,34% 55%,36% 85%,38% 30%,40% 70%,42% 45%,44% 80%,46% 55%,48% 90%,50% 40%,52% 75%,54% 50%,56% 85%,58% 35%,60% 70%,62% 55%,64% 80%,66% 40%,68% 90%,70% 50%,72% 75%,74% 45%,76% 85%,78% 55%,80% 70%,82% 35%,84% 80%,86% 50%,88% 90%,90% 40%,92% 75%,94% 55%,96% 85%,98% 45%,100% 100%); z-index: 2; }
+        .torn-bottom { position: relative; }
+        .torn-bottom::after { content: ''; position: absolute; bottom: -2px; left: -1%; right: -1%; height: 40px; background: var(--bg); clip-path: polygon(0% 0%,2% 40%,4% 10%,6% 50%,8% 20%,10% 60%,12% 25%,14% 45%,16% 15%,18% 55%,20% 30%,22% 65%,24% 20%,26% 50%,28% 10%,30% 60%,32% 25%,34% 45%,36% 15%,38% 70%,40% 30%,42% 55%,44% 20%,46% 45%,48% 10%,50% 60%,52% 25%,54% 50%,56% 15%,58% 65%,60% 30%,62% 45%,64% 20%,66% 60%,68% 10%,70% 50%,72% 25%,74% 55%,76% 15%,78% 45%,80% 30%,82% 65%,84% 20%,86% 50%,88% 10%,90% 60%,92% 25%,94% 45%,96% 15%,98% 55%,100% 0%); z-index: 2; }
+        .torn-alt::before { background: var(--bg2); }
+        .torn-alt2::after { background: var(--bg); }
+
+        /* ===== HERO ===== */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 5rem; position: relative; overflow: hidden; background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80') center/cover no-repeat; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(42,31,20,0.88) 0%, rgba(42,31,20,0.72) 50%, rgba(42,31,20,0.88) 100%); }
+        .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(181,74,31,0.08) 0%, transparent 60%); animation: heroG 10s ease infinite alternate; }
+        @keyframes heroG { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(3%,2%) scale(1.1); } }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: #d4764a; border: 1px solid rgba(212,118,74,0.4); padding: 0.5rem 1.2rem; border-radius: 50px; margin-bottom: 2rem; background: rgba(181,74,31,0.1); }
+        .hero-badge-dot { width: 6px; height: 6px; background: #d4764a; border-radius: 50%; animation: pulse 2s ease infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
+
+        /* GLITCH */
+        .glitch { position: relative; display: inline-block; }
+        .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, var(--accent) 0%, #d4764a 50%, #c49a6c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .glitch::before { animation: g1 3s infinite linear alternate-reverse; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); }
+        .glitch::after { animation: g2 2s infinite linear alternate-reverse; clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%); }
+        @keyframes g1 { 0%,95% { transform: translate(0); } 96% { transform: translate(-3px,1px); } 97% { transform: translate(3px,-1px); } 100% { transform: translate(0); } }
+        @keyframes g2 { 0%,93% { transform: translate(0); } 94% { transform: translate(2px,-1px); } 95% { transform: translate(-3px,2px); } 100% { transform: translate(0); } }
+
+        .hero h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; color: #f2ece1; }
+        .hero p { font-size: 1.15rem; color: #c4b8a5; max-width: 620px; margin: 0 auto 2.5rem; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ===== BUTTONS ===== */
+        .btn { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--mono); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; cursor: pointer; border: none; position: relative; overflow: hidden; transition: all 0.3s var(--ease); box-shadow: var(--shadow-sm); }
+        .btn:active { transform: translateY(2px) scale(0.97) !important; box-shadow: 0 1px 4px rgba(42,31,20,0.2) !important; transition: all 0.1s !important; }
+        .btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent); opacity: 0; transition: opacity 0.3s; }
+        .btn:hover::before { opacity: 1; }
+        .btn-primary { background: var(--text); color: var(--bg); }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(42,31,20,0.2); }
+        .btn-whatsapp { background: var(--accent); color: #fff; }
+        .btn-whatsapp:hover { background: var(--accent2); transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-glow); }
+        .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border2); }
+        .btn-outline:hover { background: rgba(42,31,20,0.06); border-color: var(--text); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+        /* ===== BURNT / SCORCHED EDGES ===== */
+        .burnt-edge { position: relative; }
+        .burnt-edge::after { content: ''; position: absolute; inset: -2px; pointer-events: none; z-index: 3; border-radius: inherit; box-shadow: inset 0 0 20px rgba(42,31,20,0.25), inset 0 0 60px rgba(181,74,31,0.08); }
+        .burnt-card { border-radius: 12px; position: relative; overflow: hidden; }
+        .burnt-card::before { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit; box-shadow: inset 0 0 30px rgba(42,31,20,0.3), inset 3px 3px 15px rgba(100,60,20,0.15), inset -3px -3px 15px rgba(100,60,20,0.1); background: linear-gradient(135deg, rgba(120,70,20,0.06) 0%, transparent 40%, transparent 60%, rgba(120,70,20,0.06) 100%); }
+        .burnt-card::after { content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none; border-radius: inherit; clip-path: polygon(0% 2%,1% 0%,3% 1%,5% 0%,8% 2%,12% 0%,15% 1%,20% 0%,25% 2%,30% 0%,35% 1%,40% 0%,45% 2%,50% 0%,55% 1%,60% 0%,65% 2%,70% 0%,75% 1%,80% 0%,85% 2%,90% 0%,93% 1%,95% 0%,97% 2%,100% 0%,100% 98%,99% 100%,97% 99%,95% 100%,92% 98%,88% 100%,85% 99%,80% 100%,75% 98%,70% 100%,65% 99%,60% 100%,55% 98%,50% 100%,45% 99%,40% 100%,35% 98%,30% 100%,25% 99%,20% 100%,15% 98%,10% 100%,7% 99%,5% 100%,3% 98%,0% 100%); background: linear-gradient(to bottom, rgba(100,60,20,0.12) 0%, transparent 8%, transparent 92%, rgba(100,60,20,0.12) 100%); }
+        .service-card.burnt-card, .team-card.burnt-card, .work-card.burnt-card, .testimonial-card.burnt-card, .about-feature.burnt-card, .location-card.burnt-card { }
+
+        .hero-stats { display: flex; justify-content: center; gap: 4rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(242,236,225,0.15); }
+        .stat { text-align: center; }
+        .stat-number { font-family: var(--mono); font-size: 2rem; font-weight: 700; color: #f2ece1; }
+        .stat-label { font-size: 0.72rem; color: #a89b8a; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
+
+        /* ===== MARQUEE ===== */
+        .marquee-wrap { overflow: hidden; white-space: nowrap; background: var(--accent); padding: 0.7rem 0; position: relative; }
+        .marquee-track { display: inline-flex; gap: 4rem; animation: marquee 20s linear infinite; font-family: var(--mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #f2ece1; }
+        .marquee-track span { flex-shrink: 0; }
+        .marquee-dot { color: rgba(242,236,225,0.5) !important; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 7rem 2rem; position: relative; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-tag { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; display: block; }
+        .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .section-subtitle { font-size: 1.05rem; color: var(--text2); max-width: 550px; margin: 0 auto; }
+
+        /* ===== SERVICES (SKEWED) ===== */
+        .skew-section { transform: skewY(-2deg); padding: 8rem 2rem; }
+        .skew-section > .container { transform: skewY(2deg); }
+        .stripe-bg { background-image: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(181,74,31,0.02) 10px, rgba(181,74,31,0.02) 20px); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .service-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem 2rem; transition: all 0.5s var(--ease); position: relative; overflow: hidden; box-shadow: var(--shadow-sm), inset 0 0 25px rgba(42,31,20,0.08); }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), #d4764a, #c49a6c); opacity: 0; transition: opacity 0.3s; }
+        .service-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(181,74,31,0.05), transparent 60%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+        .service-card:hover { border-color: var(--border2); transform: translateY(-8px) rotate(-0.5deg); box-shadow: var(--shadow-lg); }
+        .service-card:hover::before, .service-card:hover::after { opacity: 1; }
+        .service-card:active { transform: translateY(-2px) rotate(0deg) scale(0.98) !important; box-shadow: var(--shadow-sm) !important; transition: all 0.1s !important; }
+        .service-icon { width: 50px; height: 50px; background: rgba(181,74,31,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.4rem; transition: transform 0.3s, background 0.3s; }
+        .service-card:hover .service-icon { transform: scale(1.15) rotate(5deg); background: rgba(181,74,31,0.18); }
+        .service-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .service-card p { font-size: 0.88rem; color: var(--text2); line-height: 1.7; }
+        .service-card .service-tag { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); margin-top: 1.2rem; display: block; }
+
+        /* ===== PARALLAX IMAGE BAND ===== */
+        .parallax-band { position: relative; height: 50vh; min-height: 350px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .parallax-band-bg { position: absolute; inset: -20%; background-size: cover; background-position: center; background-attachment: fixed; will-change: transform; }
+        .parallax-band-overlay { position: absolute; inset: 0; background: rgba(42,31,20,0.75); }
+        .parallax-band-content { position: relative; z-index: 1; text-align: center; padding: 2rem; }
+        .parallax-band-content h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; color: #f2ece1; }
+        .parallax-band-content p { font-size: 1.05rem; color: #c4b8a5; max-width: 550px; margin: 0 auto; }
+
+        /* ===== TEAM SECTION ===== */
+        .team-single { max-width: 900px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg), inset 0 0 40px rgba(42,31,20,0.12); position: relative; }
+        .team-single::before { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit; box-shadow: inset 0 0 50px rgba(42,31,20,0.2), inset 5px 5px 25px rgba(100,60,20,0.12), inset -5px -5px 25px rgba(100,60,20,0.08); }
+        .team-single::after { content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none; border-radius: inherit; clip-path: polygon(0% 3%,2% 0%,5% 2%,8% 0%,12% 3%,18% 0%,22% 2%,28% 0%,35% 3%,42% 0%,48% 2%,55% 0%,62% 3%,68% 0%,75% 2%,82% 0%,88% 3%,92% 0%,96% 2%,100% 0%,100% 97%,98% 100%,95% 98%,90% 100%,85% 97%,80% 100%,75% 98%,68% 100%,62% 97%,55% 100%,48% 98%,42% 100%,35% 97%,28% 100%,22% 98%,15% 100%,8% 97%,3% 100%,0% 98%); background: linear-gradient(to bottom, rgba(100,60,20,0.15) 0%, transparent 10%, transparent 90%, rgba(100,60,20,0.15) 100%); }
+        .team-photo { width: 100%; display: block; filter: sepia(0.12) saturate(0.9) contrast(1.05); transition: filter 0.5s; }
+        .team-single:hover .team-photo { filter: sepia(0.05) saturate(1.05) brightness(1.03); }
+        .team-grid { display: none; }
+
+        /* ===== WORK ===== */
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
+        .work-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/10; cursor: pointer; box-shadow: var(--shadow-md), inset 0 0 25px rgba(42,31,20,0.1); }
+        .work-card-bg { width: 100%; height: 100%; transition: transform 0.7s var(--ease), filter 0.5s; }
+        .work-card:hover .work-card-bg { transform: scale(1.08); filter: brightness(1.1); }
+        .work-card:active .work-card-bg { transform: scale(1.02) !important; transition: all 0.1s !important; }
+        .work-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(42,31,20,0.85) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; transition: background 0.4s; }
+        .work-card:hover .work-card-overlay { background: linear-gradient(to top, rgba(181,74,31,0.6) 0%, rgba(42,31,20,0.3) 60%); }
+        .work-card-overlay h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; transition: transform 0.4s; }
+        .work-card:hover .work-card-overlay h3 { transform: translateY(-5px); }
+        .work-card-overlay span { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); }
+
+        /* ===== ABOUT ===== */
+        .about { background: var(--bg2); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; line-height: 1.15; }
+        .about-text p { font-size: 1rem; color: var(--text2); line-height: 1.8; margin-bottom: 1rem; }
+        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .about-feature { padding: 1.5rem; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); transition: all 0.4s var(--ease); box-shadow: var(--shadow-sm), inset 0 0 20px rgba(42,31,20,0.06); }
+        .about-feature:hover { transform: translateY(-4px) rotate(1deg); border-color: var(--accent); box-shadow: var(--shadow-glow); }
+        .about-feature:active { transform: translateY(1px) scale(0.97) !important; box-shadow: 0 1px 4px rgba(42,31,20,0.15) !important; transition: all 0.1s !important; }
+        .about-feature-number { font-family: var(--mono); font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; }
+        .about-feature h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .about-feature p { font-size: 0.78rem; color: var(--text2); margin: 0; }
+
+        /* ===== PROCESS ===== */
+        .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; }
+        .process-steps::before { content: ''; position: absolute; top: 28px; left: 60px; right: 60px; height: 1px; background: var(--border); }
+        .process-step { text-align: center; position: relative; }
+        .process-step-number { width: 56px; height: 56px; border-radius: 50%; background: var(--bg); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 700; font-size: 1rem; margin: 0 auto 1.2rem; position: relative; z-index: 1; transition: all 0.4s var(--ease); box-shadow: var(--shadow-sm), inset 0 0 15px rgba(42,31,20,0.06); }
+        .process-step:hover .process-step-number { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 30px rgba(181,74,31,0.15); transform: scale(1.15) rotate(10deg); }
+        .process-step:active .process-step-number { transform: scale(0.95) !important; transition: all 0.1s !important; }
+        .process-step h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .process-step p { font-size: 0.78rem; color: var(--text2); line-height: 1.6; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-track { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 1rem 0 2rem; scrollbar-width: none; }
+        .testimonials-track::-webkit-scrollbar { display: none; }
+        .testimonial-card { flex: 0 0 400px; scroll-snap-align: start; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.4s var(--ease); box-shadow: var(--shadow-sm), inset 0 0 25px rgba(42,31,20,0.06); }
+        .testimonial-card:hover { transform: translateY(-6px) rotate(-0.5deg); border-color: var(--accent); box-shadow: 0 15px 40px rgba(42,31,20,0.12); }
+        .testimonial-card:active { transform: translateY(1px) scale(0.98) !important; transition: all 0.1s !important; }
+        .testimonial-stars { color: #fbbf24; font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 2px; }
+        .testimonial-text { font-size: 0.92rem; color: var(--text2); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 0.8rem; }
+        .testimonial-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 700; font-size: 0.8rem; color: var(--accent); }
+        .testimonial-name { font-weight: 600; font-size: 0.9rem; }
+        .testimonial-role { font-size: 0.72rem; color: var(--text3); }
+
+        /* ===== CTA / CONTACT ===== */
+        .cta-section { background: var(--bg2); text-align: center; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(181,74,31,0.05) 0%, transparent 60%); }
+        .cta-content { position: relative; z-index: 1; }
+        .cta-content h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .cta-content p { font-size: 1.05rem; color: var(--text2); max-width: 500px; margin: 0 auto 2rem; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* Contact Form */
+        .contact-form { max-width: 600px; margin: 3rem auto 0; text-align: left; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); margin-bottom: 0.5rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.8rem 1rem; background: var(--bg); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--text); font-family: var(--sans); font-size: 0.9rem;
+            transition: all 0.3s var(--ease); box-shadow: var(--shadow-sm);
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(181,74,31,0.12), var(--shadow-sm);
+            transform: translateY(-1px);
+        }
+        .form-group input:active, .form-group textarea:active { transform: translateY(1px) !important; transition: all 0.1s !important; }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b5d4f' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+        .form-group select option { background: var(--bg); color: var(--text); }
+        .form-submit { width: 100%; margin-top: 0.5rem; }
+        .form-status { text-align: center; margin-top: 1rem; font-family: var(--mono); font-size: 0.8rem; }
+        .form-status.success { color: var(--accent); }
+        .form-status.error { color: #ef4444; }
+
+        /* ===== LOCATIONS ===== */
+        .locations { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+        .location-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; text-align: center; transition: all 0.4s var(--ease); box-shadow: var(--shadow-sm), inset 0 0 25px rgba(42,31,20,0.08); }
+        .location-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow-glow); }
+        .location-card:active { transform: translateY(1px) scale(0.98) !important; transition: all 0.1s !important; }
+        .location-card .flag { font-size: 2.5rem; margin-bottom: 1rem; }
+        .location-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .location-card p { font-size: 0.85rem; color: var(--text2); }
+
+        /* ===== FOOTER (TERMINAL) ===== */
+        .footer { padding: 4rem 2rem 2rem; position: relative; background: linear-gradient(180deg, #0a0c0a 0%, #0d120d 40%, #0a0f0a 100%); border-top: 2px solid #1a3a1a; overflow: hidden; }
+        .footer::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(51,255,0,0.015) 2px, rgba(51,255,0,0.015) 4px); pointer-events: none; z-index: 1; }
+        .footer::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(51,255,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 1; }
+        .footer .container { position: relative; z-index: 2; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-logo { height: 36px; width: auto; filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(51,255,0,0.3)); object-fit: contain; }
+        .footer-brand p { font-size: 0.85rem; color: #4a7a4a; line-height: 1.7; margin-top: 1rem; max-width: 300px; font-family: var(--mono); }
+        .footer-col h4 { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: #33ff00; margin-bottom: 1rem; text-shadow: 0 0 8px rgba(51,255,0,0.4); }
+        .footer-col a { display: block; font-size: 0.85rem; color: #4a7a4a; text-decoration: none; padding: 0.3rem 0; transition: all 0.3s; font-family: var(--mono); }
+        .footer-col a:hover { color: #33ff00; transform: translateX(4px); text-shadow: 0 0 6px rgba(51,255,0,0.3); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid #1a3a1a; font-size: 0.72rem; color: #3a5a3a; font-family: var(--mono); }
+        .footer-socials { display: flex; gap: 1rem; }
+        .footer-socials a { color: #3a5a3a; text-decoration: none; transition: all 0.3s; font-family: var(--mono); }
+        .footer-socials a:hover { color: #33ff00; transform: scale(1.2); text-shadow: 0 0 8px rgba(51,255,0,0.5); }
+        .footer-cursor { color: #33ff00; animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(181,74,31,0.35); z-index: 90; text-decoration: none; transition: all 0.4s var(--ease); animation: floatB 3s ease infinite; }
+        .whatsapp-float:hover { transform: scale(1.15); box-shadow: 0 8px 35px rgba(181,74,31,0.5); }
+        .whatsapp-float:active { transform: scale(0.95) !important; transition: all 0.1s !important; }
+        .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+        @keyframes floatB { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+        /* ===== PARTICLES ===== */
+        .particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+        .particle { position: absolute; border-radius: 50%; background: var(--accent); opacity: 0.06; animation: pFloat linear infinite; }
+        @keyframes pFloat { 0% { transform: translateY(100vh) rotate(0); opacity: 0; } 10% { opacity: 0.06; } 90% { opacity: 0.06; } 100% { transform: translateY(-100px) rotate(720deg); opacity: 0; } }
+
+        /* ===== CURSOR ===== */
+        .cursor-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; position: fixed; pointer-events: none; z-index: 99999; mix-blend-mode: difference; }
+        .cursor-ring { width: 40px; height: 40px; border: 1.5px solid var(--accent); border-radius: 50%; position: fixed; pointer-events: none; z-index: 99999; transition: width 0.3s, height 0.3s, border-color 0.3s; transform: translate(-50%,-50%); }
+        .cursor-ring.hover { width: 60px; height: 60px; border-color: var(--text); background: rgba(181,74,31,0.06); }
+        @media (max-width: 768px) { .cursor-dot, .cursor-ring { display: none; } }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s, transform 0.8s; }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s, transform 0.8s; }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) { .nav-links { display: none; } .hamburger { display: flex; } .mobile-menu { display: flex; } .about-grid { grid-template-columns: 1fr; } .process-steps { grid-template-columns: repeat(2, 1fr); } .process-steps::before { display: none; } .footer-grid { grid-template-columns: 1fr 1fr; } .hero-stats { gap: 2rem; } .skew-section { transform: none; } .skew-section > .container { transform: none; } .locations { grid-template-columns: 1fr; } .parallax-band-bg { background-attachment: scroll; } }
+        @media (max-width: 640px) { section { padding: 4rem 1.2rem; } .hero-stats { flex-direction: column; gap: 1.5rem; } .process-steps { grid-template-columns: 1fr; } .work-grid { grid-template-columns: 1fr; } .testimonial-card { flex: 0 0 300px; } .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; } .hero-buttons { flex-direction: column; align-items: center; } .btn { width: 100%; max-width: 280px; justify-content: center; } .form-row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <div class="loader" id="loader"><div class="loader-inner">[ <span>qiuQ</span> ]</div></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo"><img src="Logo (2).png" alt="qiuQ"></a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact" class="nav-cta">Start a Project</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services" class="mobile-menu-link">Services</a>
+        <a href="#team" class="mobile-menu-link">Team</a>
+        <a href="#work" class="mobile-menu-link">Work</a>
+        <a href="#about" class="mobile-menu-link">About</a>
+        <a href="#process" class="mobile-menu-link">Process</a>
+        <a href="#testimonials" class="mobile-menu-link">Reviews</a>
+        <a href="#contact" class="mobile-menu-link">Contact</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="particles" id="heroParticles"></div>
+        <div class="hero-content">
+            <div class="hero-badge"><span class="hero-badge-dot"></span>Lagos & London</div>
+            <h1>We solve business problems<br>with <span class="glitch" data-text="technology">technology</span></h1>
+            <p>Web design, mobile apps, and business automation for startups and enterprises. We turn complex problems into simple, scalable solutions.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/1234567890?text=Hi%20qiuQ!%20I%27m%20interested%20in%20your%20services." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Chat on WhatsApp
+                </a>
+                <a href="#contact" class="btn btn-primary">Start a Project</a>
+                <a href="#work" class="btn btn-outline">View Our Work</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><div class="stat-number">150+</div><div class="stat-label">Projects Delivered</div></div>
+                <div class="stat"><div class="stat-number">98%</div><div class="stat-label">Client Satisfaction</div></div>
+                <div class="stat"><div class="stat-number">8+</div><div class="stat-label">Years Experience</div></div>
+                <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Support Available</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span>Web Design</span><span class="marquee-dot">*</span><span>Mobile Apps</span><span class="marquee-dot">*</span><span>Business Automation</span><span class="marquee-dot">*</span><span>E-Commerce</span><span class="marquee-dot">*</span><span>UI/UX</span><span class="marquee-dot">*</span><span>Workflow Systems</span><span class="marquee-dot">*</span><span>SaaS Products</span><span class="marquee-dot">*</span><span>API Integration</span><span class="marquee-dot">*</span>
+            <span>Web Design</span><span class="marquee-dot">*</span><span>Mobile Apps</span><span class="marquee-dot">*</span><span>Business Automation</span><span class="marquee-dot">*</span><span>E-Commerce</span><span class="marquee-dot">*</span><span>UI/UX</span><span class="marquee-dot">*</span><span>Workflow Systems</span><span class="marquee-dot">*</span><span>SaaS Products</span><span class="marquee-dot">*</span><span>API Integration</span><span class="marquee-dot">*</span>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="skew-section torn-top torn-bottom stripe-bg">
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">// What we do</span>
+                    <h2 class="section-title">Services built for growth</h2>
+                    <p class="section-subtitle">End-to-end digital solutions. From strategy to deployment, we handle everything.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card burnt-card reveal"><div class="service-icon">&#x1F310;</div><h3>Web Design & Development</h3><p>Custom websites that are fast, beautiful, and conversion-focused. Landing pages to complex web apps.</p><span class="service-tag">UI/UX / Frontend / Backend</span></div>
+                    <div class="service-card burnt-card reveal"><div class="service-icon">&#x1F4F1;</div><h3>Mobile App Development</h3><p>Native and cross-platform apps for iOS and Android. Seamless experiences users love.</p><span class="service-tag">iOS / Android / React Native / Flutter</span></div>
+                    <div class="service-card burnt-card reveal"><div class="service-icon">&#x2699;&#xFE0F;</div><h3>Business Automation</h3><p>Automate repetitive tasks, workflows, and operations. Save time, reduce errors, scale faster.</p><span class="service-tag">Workflows / APIs / AI / CRM</span></div>
+                    <div class="service-card burnt-card reveal"><div class="service-icon">&#x1F6D2;</div><h3>E-Commerce Solutions</h3><p>Online stores that sell. Custom development with secure payments and inventory management.</p><span class="service-tag">Shopify / WooCommerce / Custom</span></div>
+                    <div class="service-card burnt-card reveal"><div class="service-icon">&#x1F3A8;</div><h3>Branding & Identity</h3><p>Visual identities that tell your story. Logo design, brand guidelines, and creative direction.</p><span class="service-tag">Logo / Guidelines / Strategy</span></div>
+                    <div class="service-card burnt-card reveal"><div class="service-icon">&#x26A1;</div><h3>SaaS & Product Development</h3><p>From MVP to full-scale SaaS. We help you build, validate, and scale your software idea.</p><span class="service-tag">MVP / SaaS / Cloud / API</span></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PARALLAX TEAM IMAGE -->
+    <div class="parallax-band">
+        <div class="parallax-band-bg" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80');"></div>
+        <div class="parallax-band-overlay"></div>
+        <div class="parallax-band-content reveal">
+            <span class="section-tag">// Our team</span>
+            <h2>One team, one goal</h2>
+            <p>We're a diverse group of designers, developers, and strategists united by a passion for solving problems with technology.</p>
+        </div>
+    </div>
+
+    <!-- TEAM -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">// Meet the team</span>
+                <h2 class="section-title">The people behind qiuQ</h2>
+                <p class="section-subtitle">Creators, builders, and problem-solvers working from Lagos and London.</p>
+            </div>
+            <div class="team-single reveal">
+                <img src="team.png" alt="The qiuQ Team" class="team-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="work" id="work" style="background: var(--bg2);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">// Selected work</span>
+                <h2 class="section-title">Projects that deliver results</h2>
+                <p class="section-subtitle">A curated selection of our recent work across industries.</p>
+            </div>
+            <div class="work-grid">
+                <div class="work-card burnt-card reveal"><div class="work-card-bg" style="background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80') center/cover; width:100%; height:100%;"></div><div class="work-card-overlay"><span>E-Commerce / Web Design</span><h3>Luxe Fashion Store</h3></div></div>
+                <div class="work-card burnt-card reveal"><div class="work-card-bg" style="background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80') center/cover; width:100%; height:100%;"></div><div class="work-card-overlay"><span>SaaS / Dashboard</span><h3>CloudSync Analytics</h3></div></div>
+                <div class="work-card burnt-card reveal"><div class="work-card-bg" style="background: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80') center/cover; width:100%; height:100%;"></div><div class="work-card-overlay"><span>Mobile App / Automation</span><h3>FitTrack Health App</h3></div></div>
+                <div class="work-card burnt-card reveal"><div class="work-card-bg" style="background: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80') center/cover; width:100%; height:100%;"></div><div class="work-card-overlay"><span>Branding / Web Design</span><h3>EcoVerse Sustainability</h3></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <div class="torn-top torn-alt torn-bottom torn-alt2">
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text reveal-left">
+                        <span class="section-tag">// Who we are</span>
+                        <h2>A Lagos & London agency obsessed with solving problems</h2>
+                        <p>We're not just a design shop. qiuQ is a problem-solving company. We help small businesses automate their operations and enterprises build products that scale.</p>
+                        <p>Every project starts with understanding your business. We identify bottlenecks, design solutions, and build technology that moves the needle.</p>
+                        <div style="margin-top: 1.5rem;">
+                            <a href="#contact" class="btn btn-primary">Work With Us</a>
+                        </div>
+                    </div>
+                    <div class="about-features reveal-right">
+                        <div class="about-feature burnt-card"><div class="about-feature-number">150+</div><h4>Projects Shipped</h4><p>Across 20+ industries</p></div>
+                        <div class="about-feature burnt-card"><div class="about-feature-number">50+</div><h4>Happy Clients</h4><p>Long-term partnerships</p></div>
+                        <div class="about-feature burnt-card"><div class="about-feature-number">2</div><h4>Offices</h4><p>Lagos, Nigeria & London, UK</p></div>
+                        <div class="about-feature burnt-card"><div class="about-feature-number">4.9</div><h4>Star Rating</h4><p>Google & Clutch reviews</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PARALLAX AUTOMATION -->
+    <div class="parallax-band">
+        <div class="parallax-band-bg" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80');"></div>
+        <div class="parallax-band-overlay"></div>
+        <div class="parallax-band-content reveal">
+            <span class="section-tag">// Automation</span>
+            <h2>We automate what slows you down</h2>
+            <p>From CRM integrations to AI-powered workflows, we build systems that let you focus on what matters.</p>
+        </div>
+    </div>
+
+    <!-- PROCESS -->
+    <section class="process stripe-bg" id="process">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">// How we work</span>
+                <h2 class="section-title">Our process is simple</h2>
+                <p class="section-subtitle">A proven 4-step workflow that delivers results on time and on budget.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step reveal"><div class="process-step-number">01</div><h4>Discovery</h4><p>We learn your business, goals, audience, and pain points.</p></div>
+                <div class="process-step reveal"><div class="process-step-number">02</div><h4>Strategy & Design</h4><p>Wireframes, prototypes, and pixel-perfect UI that solves real problems.</p></div>
+                <div class="process-step reveal"><div class="process-step-number">03</div><h4>Develop & Automate</h4><p>Clean code, modern frameworks, and smart automation integrations.</p></div>
+                <div class="process-step reveal"><div class="process-step-number">04</div><h4>Launch & Scale</h4><p>We deploy, monitor, optimize, and scale. Your success is our mission.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE 2 -->
+    <div class="marquee-wrap" style="background: #0a0c0a; border-top: 1px solid #1a3a1a; border-bottom: 1px solid #1a3a1a;">
+        <div class="marquee-track" style="color: #33ff00; animation-direction: reverse; animation-duration: 25s; text-shadow: 0 0 8px rgba(51,255,0,0.3);">
+            <span>&#9733; Lagos &#9733; London &#9733; Automation &#9733; Web Design &#9733; Mobile Apps &#9733; SaaS &#9733; Code is Poetry &#9733; Design Matters &#9733;</span>
+            <span>&#9733; Lagos &#9733; London &#9733; Automation &#9733; Web Design &#9733; Mobile Apps &#9733; SaaS &#9733; Code is Poetry &#9733; Design Matters &#9733;</span>
+        </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">// Client reviews</span>
+                <h2 class="section-title">Don't take our word for it</h2>
+                <p class="section-subtitle">Hear from the businesses we've helped grow.</p>
+            </div>
+            <div class="testimonials-track">
+                <div class="testimonial-card burnt-card"><div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">"qiuQ automated our entire client onboarding process. What took 3 hours now takes 10 minutes. Game changer for our agency."</p><div class="testimonial-author"><div class="testimonial-avatar">KO</div><div><div class="testimonial-name">Kunle Ogundimu</div><div class="testimonial-role">CEO, BrightPath Agency, Lagos</div></div></div></div>
+                <div class="testimonial-card burnt-card"><div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">"They built our mobile app and integrated it with our existing CRM. The automation alone saved us 20 hours a week."</p><div class="testimonial-author"><div class="testimonial-avatar">SC</div><div><div class="testimonial-name">Sarah Chen</div><div class="testimonial-role">CTO, HealthSync, London</div></div></div></div>
+                <div class="testimonial-card burnt-card"><div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">"Professional, responsive, and genuinely talented. They didn't just build a website -- they built a growth engine for our business."</p><div class="testimonial-author"><div class="testimonial-avatar">JM</div><div><div class="testimonial-name">James Mitchell</div><div class="testimonial-role">Director, EcoVerse, London</div></div></div></div>
+                <div class="testimonial-card burnt-card"><div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">"Our e-commerce conversion rate doubled within 2 months. qiuQ understood our market and delivered beyond expectations."</p><div class="testimonial-author"><div class="testimonial-avatar">FA</div><div><div class="testimonial-name">Folake Adeyemi</div><div class="testimonial-role">Founder, Luxe Fashion, Lagos</div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIONS -->
+    <div class="torn-top torn-alt">
+        <section class="locations-section" style="background: var(--bg2); padding: 5rem 2rem;">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">// Where we are</span>
+                    <h2 class="section-title">Two cities, one mission</h2>
+                    <p class="section-subtitle">Serving clients across Africa, Europe, and beyond.</p>
+                </div>
+                <div class="locations">
+                    <div class="location-card burnt-card reveal">
+                        <div class="flag">&#x1F1F3;&#x1F1EC;</div>
+                        <h3>Lagos, Nigeria</h3>
+                        <p>Our African headquarters. Serving the vibrant Lagos tech ecosystem and businesses across West Africa.</p>
+                    </div>
+                    <div class="location-card burnt-card reveal">
+                        <div class="flag">&#x1F1EC;&#x1F1E7;</div>
+                        <h3>London, United Kingdom</h3>
+                        <p>Our European hub. Working with enterprises and startups across the UK and continental Europe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA / CONTACT -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content reveal">
+                <span class="section-tag">// Let's talk</span>
+                <h2>Ready to build<br>something <span class="glitch" data-text="amazing">amazing</span>?</h2>
+                <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/1234567890?text=Hi%20qiuQ!%20I'd%20like%20to%20discuss%20a%20project." class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp Us Now
+                    </a>
+                </div>
+            </div>
+            <form class="contact-form reveal" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group"><label for="name">Your Name *</label><input type="text" id="name" name="name" placeholder="John Doe" required></div>
+                    <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="you@company.com" required></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="company">Company</label><input type="text" id="company" name="company" placeholder="Acme Inc."></div>
+                    <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="+234 xxx xxx xxxx"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="projectType">Project Type</label><select id="projectType" name="projectType"><option value="">Select...</option><option>Web Design</option><option>Mobile App</option><option>Business Automation</option><option>E-Commerce</option><option>Branding</option><option>SaaS Product</option><option>Other</option></select></div>
+                    <div class="form-group"><label for="budget">Budget Range</label><select id="budget" name="budget"><option value="">Select...</option><option>Under $5,000</option><option>$5,000 - $15,000</option><option>$15,000 - $50,000</option><option>$50,000+</option></select></div>
+                </div>
+                <div class="form-group"><label for="message">Tell us about your project *</label><textarea id="message" name="message" placeholder="Goals, timeline, challenges..." required></textarea></div>
+                <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+                <div class="form-status" id="formStatus"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#"><img src="Logo (2).png" alt="qiuQ" class="footer-logo"></a>
+                    <p>Creative digital agency based in Lagos & London. We build websites, mobile apps, and automation systems that solve real business problems.</p>
+                </div>
+                <div class="footer-col"><h4>Services</h4><a href="#services">Web Design</a><a href="#services">Mobile Apps</a><a href="#services">Automation</a><a href="#services">E-Commerce</a><a href="#services">Branding</a></div>
+                <div class="footer-col"><h4>Company</h4><a href="#about">About Us</a><a href="#team">Team</a><a href="#work">Portfolio</a><a href="#process">Process</a><a href="#testimonials">Reviews</a></div>
+                <div class="footer-col"><h4>Connect</h4><a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:hello@qiuq.dev">Email Us</a><a href="#">Twitter / X</a><a href="#">Instagram</a><a href="#">LinkedIn</a></div>
+            </div>
+            <div class="footer-bottom">
+                <span>$ qiuq@terminal:~$ &copy; 2026 qiuQ. All rights reserved. <span class="footer-cursor">_</span> Lagos | London</span>
+                <div class="footer-socials"><a href="#" aria-label="Twitter">X</a><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="LinkedIn">IN</a><a href="#" aria-label="GitHub">GH</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/1234567890?text=Hi%20qiuQ!" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        // ===== CLICK SOUND =====
+        let audioCtx;
+        function playClick() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+            o.connect(g); g.connect(audioCtx.destination);
+            o.frequency.setValueAtTime(800, audioCtx.currentTime);
+            o.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.08);
+            g.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+            o.start(audioCtx.currentTime); o.stop(audioCtx.currentTime + 0.1);
+        }
+        document.addEventListener('click', e => { if (e.target.closest('a, button, .service-card, .work-card, .testimonial-card, .about-feature, .team-card, .location-card')) playClick(); });
+
+        // ===== LOADER =====
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hidden'); document.getElementById('nav').classList.add('visible'); }, 1200); });
+
+        // ===== NAV SCROLL =====
+        window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50); });
+
+        // ===== MOBILE MENU =====
+        const hb = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu');
+        hb.addEventListener('click', () => { hb.classList.toggle('active'); mm.classList.toggle('open'); document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : ''; });
+        document.querySelectorAll('.mobile-menu-link').forEach(l => l.addEventListener('click', () => { hb.classList.remove('active'); mm.classList.remove('open'); document.body.style.overflow = ''; }));
+
+        // ===== SCROLL REVEAL =====
+        const ro = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => ro.observe(el));
+
+        // ===== COUNTER =====
+        function animateCounters() { document.querySelectorAll('.stat-number').forEach(c => { const t = c.textContent, m = t.match(/(\d+)/); if (!m) return; const tgt = parseInt(m[0]), sfx = t.replace(m[0], ''); let cur = 0; const inc = tgt / 40; const ti = setInterval(() => { cur += inc; if (cur >= tgt) { cur = tgt; clearInterval(ti); } c.textContent = Math.floor(cur) + sfx; }, 40); }); }
+        const ho = new IntersectionObserver(es => { if (es[0].isIntersecting) { animateCounters(); ho.disconnect(); } }, { threshold: 0.5 });
+        const hs = document.querySelector('.hero-stats'); if (hs) ho.observe(hs);
+
+        // ===== PARALLAX SCROLL =====
+        window.addEventListener('scroll', () => {
+            const sy = window.scrollY;
+            document.querySelectorAll('.parallax-band-bg').forEach(bg => {
+                const rect = bg.parentElement.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    const offset = (rect.top / window.innerHeight) * 80;
+                    bg.style.transform = `translateY(${offset}px)`;
+                }
+            });
+            // Hero parallax
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent && sy < window.innerHeight) {
+                heroContent.style.transform = `translateY(${sy * 0.3}px)`;
+                heroContent.style.opacity = 1 - (sy / window.innerHeight);
+            }
+        });
+
+        // ===== SERVICE CARD GLOW =====
+        document.querySelectorAll('.service-card').forEach(c => { c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%'); c.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%'); }); });
+
+        // ===== CUSTOM CURSOR =====
+        const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; dot.style.transform = 'translate(-50%,-50%)'; });
+        (function ar() { rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(ar); })();
+        document.querySelectorAll('a, button, .service-card, .work-card, .testimonial-card, .about-feature, .team-card, .location-card').forEach(el => { el.addEventListener('mouseenter', () => ring.classList.add('hover')); el.addEventListener('mouseleave', () => ring.classList.remove('hover')); });
+
+        // ===== PARTICLES =====
+        const pc = document.getElementById('heroParticles');
+        for (let i = 0; i < 20; i++) { const p = document.createElement('div'); p.className = 'particle'; const s = Math.random() * 6 + 2; p.style.width = s + 'px'; p.style.height = s + 'px'; p.style.left = Math.random() * 100 + '%'; p.style.animationDuration = (Math.random() * 15 + 10) + 's'; p.style.animationDelay = (Math.random() * 10) + 's'; pc.appendChild(p); }
+
+        // ===== CONTACT FORM =====
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const status = document.getElementById('formStatus');
+            const btn = this.querySelector('button[type="submit"]');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            try {
+                const data = Object.fromEntries(new FormData(this));
+                const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+                const result = await res.json();
+                if (result.success) {
+                    status.className = 'form-status success';
+                    status.textContent = result.message;
+                    this.reset();
+                } else {
+                    status.className = 'form-status error';
+                    status.textContent = result.error;
+                }
+            } catch (err) {
+                status.className = 'form-status error';
+                status.textContent = 'Network error. Please try again.';
+            }
+            btn.textContent = 'Send Message';
+            btn.disabled = false;
+        });
+    </script>
+</body>
+</html>
