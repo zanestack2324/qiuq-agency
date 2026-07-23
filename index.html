@@ -51,11 +51,11 @@
         @keyframes glitchLoad { 0% { text-shadow: 2px 0 #b54a1f, -2px 0 #6b5d4f; } 100% { text-shadow: -2px 0 #b54a1f, 2px 0 #6b5d4f; } }
 
         /* ===== NAVBAR ===== */
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.7rem 2rem; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(24px); background: rgba(242,236,225,0.92); border-bottom: 1px solid rgba(42,31,20,0.06); transform: translateY(-100%); transition: transform 0.4s, box-shadow 0.3s; }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.7rem 1.5rem; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(24px); background: rgba(242,236,225,0.92); border-bottom: 1px solid rgba(42,31,20,0.06); transform: translateY(-100%); transition: transform 0.4s, box-shadow 0.3s; }
         .nav.visible { transform: translateY(0); }
         .nav.scrolled { box-shadow: 0 4px 30px rgba(42,31,20,0.08); }
-        .nav-logo { display: flex; align-items: center; text-decoration: none; }
-        .nav-logo img { height: 40px; width: auto; object-fit: contain; }
+        .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+        .nav-logo img { height: 40px; width: auto; min-width: 40px; object-fit: contain; }
         .nav-links { display: flex; gap: 1.8rem; align-items: center; list-style: none; }
         .nav-links a { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text2); text-decoration: none; transition: color 0.3s; position: relative; }
         .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s var(--ease); }
@@ -69,9 +69,10 @@
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
-        .mobile-menu { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 2rem; opacity: 0; visibility: hidden; transition: all 0.3s; }
+        .mobile-menu { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 2rem; opacity: 0; visibility: hidden; transition: all 0.3s; padding: 2rem; }
         .mobile-menu.open { opacity: 1; visibility: visible; }
-        .mobile-menu a { font-family: var(--mono); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); text-decoration: none; transition: color 0.3s; }
+        .mobile-menu-logo { height: 36px; width: auto; margin-bottom: 2rem; filter: drop-shadow(0 2px 8px rgba(42,31,20,0.1)); }
+        .mobile-menu a { font-family: var(--mono); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); text-decoration: none; transition: color 0.3s; }
         .mobile-menu a:hover { color: var(--accent); }
 
         /* ===== TORN PAPER ===== */
@@ -178,7 +179,7 @@
         .team-grid { display: none; }
 
         /* ===== WORK ===== */
-        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .work-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/10; cursor: pointer; box-shadow: var(--shadow-md), inset 0 0 25px rgba(42,31,20,0.1); }
         .work-card-bg { width: 100%; height: 100%; transition: transform 0.7s var(--ease), filter 0.5s; }
         .work-card:hover .work-card-bg { transform: scale(1.08); filter: brightness(1.1); }
@@ -310,8 +311,87 @@
         .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 968px) { .nav-links { display: none; } .hamburger { display: flex; } .mobile-menu { display: flex; } .about-grid { grid-template-columns: 1fr; } .process-steps { grid-template-columns: repeat(2, 1fr); } .process-steps::before { display: none; } .footer-grid { grid-template-columns: 1fr 1fr; } .hero-stats { gap: 2rem; } .skew-section { transform: none; } .skew-section > .container { transform: none; } .locations { grid-template-columns: 1fr; } .parallax-band-bg { background-attachment: scroll; } }
-        @media (max-width: 640px) { section { padding: 4rem 1.2rem; } .hero-stats { flex-direction: column; gap: 1.5rem; } .process-steps { grid-template-columns: 1fr; } .work-grid { grid-template-columns: 1fr; } .testimonial-card { flex: 0 0 300px; } .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; } .hero-buttons { flex-direction: column; align-items: center; } .btn { width: 100%; max-width: 280px; justify-content: center; } .form-row { grid-template-columns: 1fr; } }
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); }
+            .process-steps { grid-template-columns: repeat(2, 1fr); }
+            .process-steps::before { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .mobile-menu { display: flex; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-stats { gap: 2rem; }
+            .skew-section { transform: none; }
+            .skew-section > .container { transform: none; }
+            .locations { grid-template-columns: 1fr; }
+            .parallax-band-bg { background-attachment: scroll; }
+            .work-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        }
+        @media (max-width: 768px) {
+            .nav { padding: 0.6rem 1rem; }
+            .nav-logo img { height: 34px; min-width: 34px; }
+            section { padding: 4rem 1.2rem; }
+            .hero { min-height: 90vh; padding-top: 4rem; }
+            .hero h1 { font-size: clamp(1.8rem, 8vw, 3rem); line-height: 1.1; }
+            .hero p { font-size: 1rem; }
+            .hero-stats { gap: 1.5rem; margin-top: 2.5rem; padding-top: 2rem; }
+            .stat-number { font-size: 1.5rem; }
+            .marquee-track { gap: 2rem; font-size: 0.65rem; }
+            .section-title { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+            .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .service-card { padding: 1.8rem 1.5rem; }
+            .team-single { max-width: 100%; border-radius: 10px; }
+            .team-photo { width: 100%; }
+            .work-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .work-card { aspect-ratio: 16/9; }
+            .about-features { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .about-feature { padding: 1.2rem; }
+            .about-feature-number { font-size: 1.5rem; }
+            .process-steps { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .testimonial-card { flex: 0 0 calc(100vw - 4rem); min-width: 280px; }
+            .cta-content h2 { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+            .contact-form { padding: 0 0.5rem; }
+            .form-group input, .form-group select, .form-group textarea { font-size: 16px; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer { padding: 3rem 1.2rem 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .footer-brand { grid-column: 1 / -1; }
+            .footer-brand p { max-width: 100%; }
+            .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+            .whatsapp-float { width: 52px; height: 52px; bottom: 1.2rem; right: 1.2rem; }
+            .whatsapp-float svg { width: 26px; height: 26px; }
+        }
+        @media (max-width: 480px) {
+            .nav { padding: 0.5rem 0.8rem; }
+            .nav-logo img { height: 30px; min-width: 30px; }
+            section { padding: 3rem 1rem; }
+            .hero { min-height: 85vh; }
+            .hero h1 { font-size: clamp(1.5rem, 7vw, 2.2rem); }
+            .hero-badge { font-size: 0.6rem; padding: 0.4rem 0.8rem; }
+            .hero-stats { flex-direction: column; gap: 1rem; }
+            .stat-number { font-size: 1.3rem; }
+            .stat-label { font-size: 0.65rem; }
+            .skew-section { padding: 4rem 1rem; }
+            .process-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+            .about-features { grid-template-columns: 1fr; gap: 1rem; }
+            .testimonial-card { flex: 0 0 calc(100vw - 2rem); padding: 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-col { display: flex; flex-direction: column; }
+            .footer-bottom { font-size: 0.65rem; }
+            .whatsapp-float { width: 48px; height: 48px; bottom: 1rem; right: 1rem; }
+            .whatsapp-float svg { width: 24px; height: 24px; }
+            .btn { padding: 0.8rem 1.5rem; font-size: 0.72rem; }
+            .mobile-menu a { font-size: 1.1rem; }
+        }
+        @media (max-width: 360px) {
+            .hero h1 { font-size: 1.4rem; }
+            .hero p { font-size: 0.9rem; }
+            .section-title { font-size: 1.4rem; }
+            .about-grid { gap: 1.5rem; }
+            .locations-section { padding: 3rem 0.8rem !important; }
+        }
     </style>
 </head>
 <body>
@@ -335,6 +415,7 @@
         <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
+        <img src="Logo (2).png" alt="qiuQ" class="mobile-menu-logo">
         <a href="#services" class="mobile-menu-link">Services</a>
         <a href="#team" class="mobile-menu-link">Team</a>
         <a href="#work" class="mobile-menu-link">Work</a>
