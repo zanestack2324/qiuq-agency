@@ -164,7 +164,7 @@ app.get('/api/admin/submissions', (req, res) => {
 
 // WhatsApp redirect helper
 app.get('/api/whatsapp', (req, res) => {
-    const number = process.env.WHATSAPP_NUMBER || '1234567890';
+    const number = process.env.WHATSAPP_NUMBER || '2349025841716';
     const message = encodeURIComponent(req.query.message || 'Hi qiuQ! I\'m interested in your services.');
     res.redirect(`https://wa.me/${number}?text=${message}`);
 });
