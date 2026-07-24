@@ -17,7 +17,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="qiuQ | Web Design, Mobile Apps & Business Automation">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://qiuq.dev/#org","name":"qiuQ","url":"https://qiuq.dev/","logo":"https://qiuq.dev/Logo%20(2).png","description":"Creative digital agency based in Lagos & London specializing in web design, mobile apps, and business automation.","address":[{"@type":"PostalAddress","addressLocality":"Lagos","addressCountry":"NG"},{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"}],"sameAs":["https://twitter.com/qiuqdev","https://www.instagram.com/qiuqdev","https://www.linkedin.com/company/qiuqdev"]},{"@type":"WebSite","@id":"https://qiuq.dev/#web","url":"https://qiuq.dev/","name":"qiuQ"},{"@type":"WebPage","@id":"https://qiuq.dev/#page","url":"https://qiuq.dev/","name":"qiuQ | Web Design, Mobile Apps & Business Automation","isPartOf":{"@id":"https://qiuq.dev/#web"}}]}
+    {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://qiuq.dev/#org","name":"qiuQ","url":"https://qiuq.dev/","logo":"https://qiuq.dev/logo.png","description":"Creative digital agency based in Lagos & London specializing in web design, mobile apps, and business automation.","address":[{"@type":"PostalAddress","addressLocality":"Lagos","addressCountry":"NG"},{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"}],"sameAs":["https://twitter.com/qiuqdev","https://www.instagram.com/qiuqdev","https://www.linkedin.com/company/qiuqdev"]},{"@type":"WebSite","@id":"https://qiuq.dev/#web","url":"https://qiuq.dev/","name":"qiuQ"},{"@type":"WebPage","@id":"https://qiuq.dev/#page","url":"https://qiuq.dev/","name":"qiuQ | Web Design, Mobile Apps & Business Automation","isPartOf":{"@id":"https://qiuq.dev/#web"}}]}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +55,7 @@
         .nav.visible { transform: translateY(0); }
         .nav.scrolled { box-shadow: 0 4px 30px rgba(42,31,20,0.08); }
         .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-        .nav-logo img { height: 40px; width: auto; min-width: 40px; object-fit: contain; filter: brightness(0); }
+        .nav-logo img { height: 40px; width: auto; display: block; filter: brightness(0); }
         .nav-links { display: flex; gap: 1.8rem; align-items: center; list-style: none; }
         .nav-links a { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text2); text-decoration: none; transition: color 0.3s; position: relative; }
         .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s var(--ease); }
@@ -71,7 +71,7 @@
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
         .mobile-menu { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 2rem; opacity: 0; visibility: hidden; transition: all 0.3s; padding: 2rem; }
         .mobile-menu.open { opacity: 1; visibility: visible; }
-        .mobile-menu-logo { height: 36px; width: auto; margin-bottom: 2rem; filter: brightness(0); }
+        .mobile-menu-logo { height: 36px; width: auto; display: block; margin-bottom: 2rem; filter: brightness(0); }
         .mobile-menu a { font-family: var(--mono); font-size: 1.3rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2); text-decoration: none; transition: color 0.3s; }
         .mobile-menu a:hover { color: var(--accent); }
 
@@ -272,7 +272,7 @@
         .footer::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(51,255,0,0.04) 0%, transparent 70%); pointer-events: none; z-index: 1; }
         .footer .container { position: relative; z-index: 2; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-        .footer-logo { height: 36px; width: auto; filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(51,255,0,0.3)); object-fit: contain; }
+        .footer-logo { height: 36px; width: auto; display: block; filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(51,255,0,0.3)); }
         .footer-brand p { font-size: 0.85rem; color: #4a7a4a; line-height: 1.7; margin-top: 1rem; max-width: 300px; font-family: var(--mono); }
         .footer-col h4 { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: #33ff00; margin-bottom: 1rem; text-shadow: 0 0 8px rgba(51,255,0,0.4); }
         .footer-col a { display: block; font-size: 0.85rem; color: #4a7a4a; text-decoration: none; padding: 0.3rem 0; transition: all 0.3s; font-family: var(--mono); }
