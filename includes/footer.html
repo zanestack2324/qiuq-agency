@@ -24,10 +24,6 @@
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
 
     <script defer>
-        const clickAudio = new Audio('/click-sound.mp3');
-        clickAudio.preload = 'auto';
-        document.addEventListener('click', e => { if (e.target.closest('a, button, input, select, textarea, .btn, .service-card, .work-card, .testimonial-card, .about-feature, .team-card, .location-card, .hamburger, .scroll-top, .whatsapp-float')) { clickAudio.currentTime = 0; clickAudio.play().catch(() => {}); } });
-
         (function() {
             const fill = document.getElementById('batteryFill');
             const pct = document.getElementById('batteryPct');
@@ -74,27 +70,19 @@
 
         document.querySelectorAll('.service-card').forEach(c => { c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%'); c.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%'); }); });
 
-        const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
-        let mx = 0, my = 0, rx = 0, ry = 0;
-        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; dot.style.transform = 'translate(-50%,-50%)'; });
-        (function ar() { rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(ar); })();
-        document.querySelectorAll('a, button, .service-card, .work-card, .testimonial-card, .about-feature, .team-card, .location-card').forEach(el => { el.addEventListener('mouseenter', () => ring.classList.add('hover')); el.addEventListener('mouseleave', () => ring.classList.remove('hover')); });
+        if (!matchMedia('(pointer:coarse)').matches) {
+            const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
+            let mx = 0, my = 0, rx = 0, ry = 0;
+            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; dot.style.transform = 'translate(-50%,-50%)'; });
+            (function ar() { rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(ar); })();
+            document.querySelectorAll('a, button, .service-card, .work-card, .testimonial-card, .about-feature, .team-card, .location-card').forEach(el => { el.addEventListener('mouseenter', () => ring.classList.add('hover')); el.addEventListener('mouseleave', () => ring.classList.remove('hover')); });
+        }
 
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
+            contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                const status = document.getElementById('formStatus');
-                const btn = this.querySelector('button[type="submit"]');
-                btn.textContent = 'Sending...'; btn.disabled = true;
-                try {
-                    const data = Object.fromEntries(new FormData(this));
-                    const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-                    const result = await res.json();
-                    if (result.success) { status.className = 'form-status success'; status.textContent = result.message; this.reset(); }
-                    else { status.className = 'form-status error'; status.textContent = result.error; }
-                } catch (err) { status.className = 'form-status error'; status.textContent = 'Network error. Please try again.'; }
-                btn.textContent = 'Send Message'; btn.disabled = false;
+                this.submit();
             });
         }
     </script>

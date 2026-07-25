@@ -10,6 +10,7 @@ const siteUrl = 'https://qiuq.dev';
 
 const baseSchema = [
   {"@type":"Organization","@id":"https://qiuq.dev/#org","name":"qiuQ","url":"https://qiuq.dev/","logo":"https://qiuq.dev/logo.png","description":"Creative digital agency based in Lagos & London specializing in web design, mobile apps, and business automation.","address":[{"@type":"PostalAddress","addressLocality":"Lagos","addressCountry":"NG"},{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"}],"sameAs":["https://twitter.com/qiuqdev","https://www.instagram.com/qiuqdev","https://www.linkedin.com/company/qiuqdev"]},
+  {"@type":"LocalBusiness","@id":"https://qiuq.dev/#local","name":"qiuQ","url":"https://qiuq.dev/","description":"Web design agency in Lagos & London offering website design, mobile app development, and business automation.","telephone":"+2349025841716","email":"info@qiuq.dev","priceRange":"$$","address":[{"@type":"PostalAddress","streetAddress":"Lagos","addressLocality":"Lagos","addressCountry":"NG"},{"@type":"PostalAddress","streetAddress":"London","addressLocality":"London","addressCountry":"GB"}],"areaServed":[{"@type":"City","name":"Lagos"},{"@type":"City","name":"London"}],"openingHours":"Mo-Fr 09:00-18:00"},
   {"@type":"WebSite","@id":"https://qiuq.dev/#web","url":"https://qiuq.dev/","name":"qiuQ"},
   {"@type":"AggregateRating","@id":"https://qiuq.dev/#rating","itemReviewed":{"@id":"https://qiuq.dev/#org"},"ratingValue":"4.9","bestRating":"5","ratingCount":"50","reviewCount":"50"}
 ];
@@ -39,6 +40,11 @@ function buildPage(pageFile) {
     try { pageSchema = baseSchema.concat(JSON.parse(meta.schema)); } catch(e) {}
   }
 
+  if (meta.slug !== 'index.html') {
+    const pageName = meta.title ? meta.title.split('|')[0].split('–')[0].split(':')[0].trim() : meta.slug;
+    pageSchema.push({"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://qiuq.dev/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@id":canonical,"name":pageName}}]});
+  }
+
   const jsonLd = {"@context":"https://schema.org","@graph":pageSchema};
 
   let html = header
@@ -58,6 +64,8 @@ function buildPage(pageFile) {
   console.log(`Built: ${meta.slug || pageFile}`);
 }
 
+const today = new Date().toISOString().slice(0, 10);
+
 const pages = fs.readdirSync(SRC).filter(f => f.endsWith('.html'));
 pages.forEach(buildPage);
 
@@ -74,7 +82,7 @@ const sitemapPages = pages.map(f => {
   const slug = meta.slug || f;
   const loc = slug === 'index.html' ? `${siteUrl}/` : `${siteUrl}/${slug}`;
   const priority = slug === 'index.html' ? '1.0' : (slug.includes('services') ? '0.9' : '0.8');
-  return `  <url><loc>${loc}</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>${priority}</priority></url>`;
+  return `  <url><loc>${loc}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${priority}</priority></url>`;
 }).filter(Boolean).join('\n');
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

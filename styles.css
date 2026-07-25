@@ -318,8 +318,10 @@ section { padding: 6rem 2rem; position: relative; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .hero-stats { gap: 2rem; }
     .locations { grid-template-columns: 1fr; }
-    .parallax-band-bg { background-attachment: scroll; }
-    .hero-bg, [style*="background-attachment: fixed"] { background-attachment: scroll !important; }
+    .parallax-band-bg { background-attachment: scroll !important; }
+    .hero-bg { background-attachment: scroll !important; }
+    .section-bg-photo .bg-photo { background-attachment: scroll !important; }
+    [style*="background-attachment: fixed"] { background-attachment: scroll !important; }
     .nav-logo img { height: 40px; }
     .nav.scrolled .nav-logo img { height: 24px; }
     .nav { height: 60px; }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{TITLE}}</title>
     <meta name="description" content="{{DESCRIPTION}}">
-    <meta name="keywords" content="{{KEYWORDS}}">
     <meta name="author" content="qiuQ">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{CANONICAL}}">
@@ -15,10 +14,12 @@
     <meta property="og:site_name" content="qiuQ">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://qiuq.dev/og-image.png">
+    <meta property="og:image:alt" content="qiuQ - Web Design Agency Lagos & London">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@qiuqdev">
     <meta name="twitter:title" content="{{OG_TITLE}}">
     <meta name="twitter:description" content="{{OG_DESCRIPTION}}">
     <meta name="twitter:image" content="https://qiuq.dev/og-image.png">
@@ -30,7 +31,21 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <script>
+    (function(){
+      var link = document.querySelector('link[href*="fonts.googleapis.com/css2"]');
+      if(link) {
+        var s = document.createElement('style');
+        s.textContent = '@font-face{font-family:"Inter";font-display:swap}@font-face{font-family:"JetBrains Mono";font-display:swap}';
+        document.head.appendChild(s);
+        link.onload = function(){ link.media = 'all'; };
+        link.media = 'print';
+      }
+    })();
+    </script>
     <link rel="stylesheet" href="/styles.css">
     <noscript><style>.loader{display:none!important}main{opacity:1!important}</style></noscript>
 </head>
