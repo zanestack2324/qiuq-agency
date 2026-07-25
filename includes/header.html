@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+    <meta name="description" content="{{DESCRIPTION}}">
+    <meta name="keywords" content="{{KEYWORDS}}">
+    <meta name="author" content="qiuQ">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{CANONICAL}}">
+    <meta property="og:title" content="{{OG_TITLE}}">
+    <meta property="og:description" content="{{OG_DESCRIPTION}}">
+    <meta property="og:url" content="{{CANONICAL}}">
+    <meta property="og:site_name" content="qiuQ">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://qiuq.dev/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{OG_TITLE}}">
+    <meta name="twitter:description" content="{{OG_DESCRIPTION}}">
+    <meta name="twitter:image" content="https://qiuq.dev/og-image.png">
+    <meta name="theme-color" content="#b54a1f">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script type="application/ld+json">
+    {{JSON_LD}}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <noscript><style>.loader{display:none!important}main{opacity:1!important}</style></noscript>
+</head>
+<body>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <div class="loader" id="loader">
+        <img src="/logo.png" alt="qiuQ" class="loader-logo" width="144" height="144">
+        <div class="battery">
+            <div class="battery-fill" id="batteryFill"></div>
+            <span class="battery-pct" id="batteryPct">0%</span>
+        </div>
+    </div>
+
+    <nav class="nav" id="nav" aria-label="Main navigation">
+        <a href="/" class="nav-logo"><img src="/logo.png" alt="qiuQ" width="84" height="84"></a>
+        <ul class="nav-links">
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/portfolio.html">Work</a></li>
+            <li><a href="/testimonials.html">Reviews</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+            <li><a href="/contact.html" class="nav-cta">Start a Project</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <img src="/logo.png" alt="qiuQ" class="mobile-menu-logo" width="84" height="84">
+        <a href="/services.html" class="mobile-menu-link">Services</a>
+        <a href="/about.html" class="mobile-menu-link">About</a>
+        <a href="/portfolio.html" class="mobile-menu-link">Work</a>
+        <a href="/testimonials.html" class="mobile-menu-link">Reviews</a>
+        <a href="/faq.html" class="mobile-menu-link">FAQ</a>
+        <a href="/contact.html" class="mobile-menu-link">Contact</a>
+    </div>
+
+    <main>

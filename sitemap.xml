@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://qiuq.dev/</loc>
-    <lastmod>2026-07-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://qiuq.dev/about.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/branding.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/business-automation.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/contact.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/ecommerce.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/faq.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://qiuq.dev/mobile-apps.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/portfolio.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/saas-development.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/services.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qiuq.dev/testimonials.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qiuq.dev/web-design.html</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
