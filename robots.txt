@@ -1,0 +1,7 @@
+# https://qiuq.dev/robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://qiuq.dev/sitemap.xml
