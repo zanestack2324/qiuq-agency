@@ -70,7 +70,7 @@
 
         document.querySelectorAll('.service-card').forEach(c => { c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%'); c.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%'); }); });
 
-        if (!matchMedia('(pointer:coarse)').matches) {
+        if (window.matchMedia('(pointer:fine)').matches) {
             const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
             let mx = 0, my = 0, rx = 0, ry = 0;
             document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; dot.style.transform = 'translate(-50%,-50%)'; });
@@ -78,13 +78,6 @@
             document.querySelectorAll('a, button, .service-card, .work-card, .testimonial-card, .about-feature, .team-card, .location-card').forEach(el => { el.addEventListener('mouseenter', () => ring.classList.add('hover')); el.addEventListener('mouseleave', () => ring.classList.remove('hover')); });
         }
 
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                this.submit();
-            });
-        }
     </script>
 </body>
 </html>
