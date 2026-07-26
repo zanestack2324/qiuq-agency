@@ -60,13 +60,23 @@ function buildPage(pageFile) {
   html += footer;
 
   const outFile = path.join(OUT, meta.slug || pageFile);
+  const outDir = path.dirname(outFile);
+  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(outFile, html, 'utf8');
   console.log(`Built: ${meta.slug || pageFile}`);
 }
 
 const today = new Date().toISOString().slice(0, 10);
 
-const pages = fs.readdirSync(SRC).filter(f => f.endsWith('.html'));
+const pages = [];
+function findPages(dir) {
+  fs.readdirSync(dir).forEach(f => {
+    const full = path.join(dir, f);
+    if (fs.statSync(full).isDirectory()) findPages(full);
+    else if (f.endsWith('.html')) pages.push(path.relative(SRC, full));
+  });
+}
+findPages(SRC);
 pages.forEach(buildPage);
 
 // Generate sitemap
