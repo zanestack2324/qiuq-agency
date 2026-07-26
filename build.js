@@ -9,8 +9,8 @@ const footer = fs.readFileSync(path.join(__dirname, 'includes', 'footer.html'), 
 const siteUrl = 'https://qiuq.dev';
 
 const baseSchema = [
-  {"@type":"Organization","@id":"https://qiuq.dev/#org","name":"qiuQ","url":"https://qiuq.dev/","logo":"https://qiuq.dev/logo.png","description":"Creative digital agency based in Lagos & London specializing in web design, mobile apps, and business automation.","address":[{"@type":"PostalAddress","addressLocality":"Lagos","addressCountry":"NG"},{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"}],"sameAs":["https://twitter.com/qiuqdev","https://www.instagram.com/qiuqdev","https://www.linkedin.com/company/qiuqdev"]},
-  {"@type":"LocalBusiness","@id":"https://qiuq.dev/#local","name":"qiuQ","url":"https://qiuq.dev/","description":"Web design agency in Lagos & London offering website design, mobile app development, and business automation.","telephone":"+2349025841716","email":"info@qiuq.dev","priceRange":"$$","address":[{"@type":"PostalAddress","streetAddress":"Lagos","addressLocality":"Lagos","addressCountry":"NG"},{"@type":"PostalAddress","streetAddress":"London","addressLocality":"London","addressCountry":"GB"}],"areaServed":[{"@type":"City","name":"Lagos"},{"@type":"City","name":"London"}],"openingHours":"Mo-Fr 09:00-18:00"},
+  {"@type":"Organization","@id":"https://qiuq.dev/#org","name":"qiuQ","url":"https://qiuq.dev/","logo":"https://qiuq.dev/logo.png","description":"Web development company based in Lagos & London specializing in web development, mobile apps, and business automation.","address":[{"@type":"PostalAddress","addressLocality":"Lagos","addressCountry":"NG"},{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"}],"sameAs":["https://twitter.com/qiuqdev","https://www.instagram.com/qiuqdev","https://www.linkedin.com/company/qiuqdev"]},
+  {"@type":"LocalBusiness","@id":"https://qiuq.dev/#local","name":"qiuQ","url":"https://qiuq.dev/","description":"Web development company in Lagos & London offering web development, mobile app development, and business automation.","telephone":"+2349025841716","email":"info@qiuq.dev","priceRange":"$$","address":[{"@type":"PostalAddress","streetAddress":"Lagos","addressLocality":"Lagos","addressCountry":"NG"},{"@type":"PostalAddress","streetAddress":"London","addressLocality":"London","addressCountry":"GB"}],"areaServed":[{"@type":"City","name":"Lagos"},{"@type":"City","name":"London"}],"openingHours":"Mo-Fr 09:00-18:00"},
   {"@type":"WebSite","@id":"https://qiuq.dev/#web","url":"https://qiuq.dev/","name":"qiuQ"},
   {"@type":"AggregateRating","@id":"https://qiuq.dev/#rating","itemReviewed":{"@id":"https://qiuq.dev/#org"},"ratingValue":"4.9","bestRating":"5","ratingCount":"50","reviewCount":"50"}
 ];
@@ -33,7 +33,7 @@ function buildPage(pageFile) {
   const pageDesc = meta.description || '';
   const pageOgTitle = meta.og_title || pageTitle;
   const pageOgDesc = meta.og_description || pageDesc;
-  const pageKeywords = meta.keywords || 'web design, mobile app development, business automation, digital agency, Lagos, London';
+  const pageKeywords = meta.keywords || 'web development, mobile app development, business automation, web development company, Lagos, London';
 
   let pageSchema = baseSchema;
   if (meta.schema) {
