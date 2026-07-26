@@ -1,0 +1,70 @@
+{
+  "posts": [
+    {
+      "id": "why-every-business-needs-automation",
+      "title": "Why Every Business Needs Automation in 2026",
+      "description": "Manual processes are costing you money. Learn how business automation saves 20+ hours per week and scales your operations with practical examples.",
+      "keywords": "business automation, workflow automation, CRM automation, AI automation, save time business, automate repetitive tasks",
+      "slug": "blog/why-every-business-needs-automation.html",
+      "category": "Automation",
+      "date": "2026-07-01",
+      "readTime": "6 min read",
+      "content": "<p>Your team spends hours every week on tasks that a computer could do in seconds. Data entry. Invoice generation. Follow-up emails. Lead assignment. These aren't just annoyances -- they're growth killers.</p><p>Business automation isn't a luxury for enterprise companies anymore. It's a survival tool for businesses of every size. Here's why.</p>"
+    },
+    {
+      "id": "how-to-choose-web-development-company",
+      "title": "How to Choose a Web Development Company in 2026",
+      "description": "Not all web development companies are equal. Here's exactly what to look for when choosing a technical partner for your business website or app.",
+      "keywords": "web development company, how to choose web developer, web agency, hire web developer, best web development company Lagos London",
+      "slug": "blog/how-to-choose-web-development-company.html",
+      "category": "Guides",
+      "date": "2026-07-05",
+      "readTime": "7 min read",
+      "content": "<p>Choosing the right web development company can make or break your project. With thousands of agencies worldwide, how do you separate the real professionals from the rest?</p>"
+    },
+    {
+      "id": "mobile-app-vs-website-which-do-you-need",
+      "title": "Mobile App vs Website: Which Do You Actually Need?",
+      "description": "Should you build a mobile app or a website? Here's an honest comparison to help you make the right decision for your business and budget.",
+      "keywords": "mobile app vs website, should I build app or website, mobile app development, responsive website, progressive web app",
+      "slug": "blog/mobile-app-vs-website-which-do-you-need.html",
+      "category": "Guides",
+      "date": "2026-07-10",
+      "readTime": "6 min read",
+      "content": "<p>The most common question we hear from business owners is: \"Should I build a mobile app or a website?\" The answer isn't always straightforward.</p>"
+    },
+    {
+      "id": "ecommerce-conversion-optimization-guide",
+      "title": "E-Commerce Conversion Optimization: A Practical Guide",
+      "description": "Your store gets traffic but no sales. Here are 12 proven tactics to double your e-commerce conversion rate with practical examples.",
+      "keywords": "ecommerce conversion rate, increase online sales, ecommerce optimization, improve conversions, online store tips, ecommerce UX",
+      "slug": "blog/ecommerce-conversion-optimization-guide.html",
+      "category": "E-Commerce",
+      "date": "2026-07-15",
+      "readTime": "7 min read",
+      "content": "<p>The average e-commerce conversion rate is 2-3%. That means 97-98% of your visitors leave without buying. Here's how to fix that.</p>"
+    },
+    {
+      "id": "saas-mvp-development-guide",
+      "title": "Building a SaaS MVP: The Complete Guide for 2026",
+      "description": "From idea to funded startup -- everything you need to know about building, launching, and validating a SaaS MVP in 2026.",
+      "keywords": "SaaS MVP, MVP development, startup MVP, how to build SaaS, SaaS launch guide, MVP for startups, SaaS development guide",
+      "slug": "blog/saas-mvp-development-guide.html",
+      "category": "SaaS",
+      "date": "2026-07-20",
+      "readTime": "10 min read",
+      "content": "<p>Every successful SaaS company started with an MVP. Slack was an internal tool. Dropbox was a demo video. Instagram was a single filter.</p>"
+    },
+    {
+      "id": "web-performance-core-web-vitals-guide",
+      "title": "Core Web Vitals: How to Score 90+ on Google PageSpeed",
+      "description": "Speed matters for SEO and user experience. Here's how we optimize every site for Core Web Vitals from day one, with practical tips you can apply today.",
+      "keywords": "Core Web Vitals, Google PageSpeed, website speed optimization, LCP, FID, CLS, web performance, SEO speed, page load time",
+      "slug": "blog/web-performance-core-web-vitals-guide.html",
+      "category": "Performance",
+      "date": "2026-07-25",
+      "readTime": "7 min read",
+      "content": "<p>Google uses Core Web Vitals as a ranking factor. A slow website doesn't just frustrate users -- it actively pushes you down in search results.</p>"
+    }
+  ]
+}
