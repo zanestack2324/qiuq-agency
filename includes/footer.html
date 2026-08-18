@@ -6,7 +6,7 @@
                 <div class="footer-brand">
                     <a href="/"><img src="/logo.png" alt="qiuQ" class="footer-logo" width="84" height="84" loading="lazy"></a>
                     <p>Professional web development company based in Lagos & London. We build custom websites, mobile apps, and automation systems that solve real business problems.</p>
-                    <div class="newsletter-form" style="margin-top:1rem;">
+                    <div class="newsletter-form" id="newsletter" style="margin-top:1rem;">
                         <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;">Get weekly tech insights:</p>
                         <form id="newsletterForm" style="display:flex;gap:0.5rem;">
                             <input type="email" name="email" placeholder="your@email.com" required style="flex:1;padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:0.85rem;">
@@ -15,9 +15,9 @@
                         <div id="newsletterMsg" style="font-size:0.8rem;margin-top:0.4rem;"></div>
                     </div>
                 </div>
-                <div class="footer-col"><h4>Services</h4><a href="/web-design.html">Web Development</a><a href="/mobile-apps.html">Mobile Apps</a><a href="/business-automation.html">Automation</a><a href="/ecommerce.html">E-Commerce</a><a href="/branding.html">Branding</a><a href="/saas-development.html">SaaS Products</a></div>
+                <div class="footer-col"><h4>Services</h4><a href="/web-design.html">Web Development</a><a href="/mobile-apps.html">Mobile Apps</a><a href="/business-automation.html">Automation</a><a href="/ecommerce.html">E-Commerce</a><a href="/real-estate-website-development/">Real Estate Websites</a><a href="/home-service-website-development/">Home Service Websites</a><a href="/branding.html">Branding</a><a href="/saas-development.html">SaaS Products</a></div>
                 <div class="footer-col"><h4>Company</h4><a href="/about.html">About Us</a><a href="/portfolio.html">Portfolio</a><a href="/case-studies.html">Case Studies</a><a href="/blog.html">Blog</a><a href="/testimonials.html">Reviews</a><a href="/contact.html">Contact</a></div>
-                <div class="footer-col"><h4>Connect</h4><a href="https://wa.me/2349025841716" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:hello@qiuq.dev">Email Us</a><a href="https://x.com/qiuqdev" target="_blank" rel="noopener noreferrer">Twitter / X</a><a href="https://instagram.com/qiuqdev" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://linkedin.com/company/qiuqdev" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+                <div class="footer-col"><h4>Connect</h4><a href="https://wa.me/2349025841716" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:info@qiuq.dev">Email Us</a><a href="https://x.com/qiuqdev" target="_blank" rel="noopener noreferrer">Twitter / X</a><a href="https://instagram.com/qiuqdev" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://linkedin.com/company/qiuqdev" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
             </div>
             <div class="footer-bottom">
                 <span>$ qiuq@terminal:~$ &copy; 2026 qiuQ. All rights reserved. <span class="footer-cursor">_</span> Lagos | London</span>
@@ -38,17 +38,9 @@
 
     <script defer>
         (function() {
-            const fill = document.getElementById('batteryFill');
-            const pct = document.getElementById('batteryPct');
             const loader = document.getElementById('loader');
             const nav = document.getElementById('nav');
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 12 + 4;
-                if (progress >= 100) { progress = 100; clearInterval(interval); setTimeout(() => { loader.classList.add('hidden'); nav.classList.add('visible'); }, 300); }
-                fill.style.width = progress + '%';
-                pct.textContent = Math.floor(progress) + '%';
-            }, 80);
+            setTimeout(() => { loader.classList.add('hidden'); nav.classList.add('visible'); }, 1800);
         })();
 
         let scrollTicking = false;
@@ -58,6 +50,9 @@
                     const sy = window.scrollY;
                     document.getElementById('nav').classList.toggle('scrolled', sy > 50);
                     document.getElementById('scrollTop').classList.toggle('visible', sy > 500);
+                    const sp = document.getElementById('scrollProgress');
+                    const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    sp.style.width = (sh > 0 ? (sy / sh) * 100 : 0) + '%';
                     scrollTicking = false;
                 });
                 scrollTicking = true;
@@ -83,14 +78,6 @@
 
         document.querySelectorAll('.service-card').forEach(c => { c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%'); c.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%'); }); });
 
-        if (window.matchMedia('(pointer:fine)').matches) {
-            const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
-            let mx = 0, my = 0, rx = 0, ry = 0;
-            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; dot.style.transform = 'translate(-50%,-50%)'; });
-            (function ar() { rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(ar); })();
-            document.querySelectorAll('a, button, .service-card, .work-card, .testimonial-card, .about-feature, .team-card, .location-card').forEach(el => { el.addEventListener('mouseenter', () => ring.classList.add('hover')); el.addEventListener('mouseleave', () => ring.classList.remove('hover')); });
-        }
-
         const nlForm = document.getElementById('newsletterForm');
         if (nlForm) {
             nlForm.addEventListener('submit', function(e) {
@@ -98,16 +85,16 @@
                 const email = this.querySelector('input[name="email"]').value;
                 const msg = document.getElementById('newsletterMsg');
                 msg.innerHTML = '<span style="color:var(--accent);">Subscribing...</span>';
-                fetch('/api/subscribe', {
+                fetch('https://formsubmit.co/ajax/info@qiuq.dev', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email })
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ email: email, _subject: 'New newsletter subscriber from qiuQ' })
                 }).then(r => r.json()).then(data => {
-                    if (data.success) {
+                    if (data.success === 'true' || data.success === true) {
                         msg.innerHTML = '<span style="color:#4ade80;">Thanks for subscribing!</span>';
                         nlForm.reset();
                     } else {
-                        msg.innerHTML = '<span style="color:#f87171;">' + (data.error || 'Something went wrong.') + '</span>';
+                        msg.innerHTML = '<span style="color:#f87171;">' + (data.message || 'Something went wrong.') + '</span>';
                     }
                 }).catch(() => {
                     msg.innerHTML = '<span style="color:#f87171;">Network error. Try again.</span>';
@@ -117,17 +104,5 @@
 
     </script>
 
-    <!-- Tawk.to Live Chat -->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/YOUR_TAWK_TO_PROPERTY_ID';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
 </body>
 </html>

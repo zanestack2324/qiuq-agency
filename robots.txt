@@ -1,7 +1,6 @@
-# https://qiuq.dev/robots.txt
+# https://qiuq-developers.vercel.app/robots.txt
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /admin/
 
-Sitemap: https://qiuq.dev/sitemap.xml
+Sitemap: https://qiuq-developers.vercel.app/sitemap.xml

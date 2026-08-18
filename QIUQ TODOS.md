@@ -1,0 +1,44 @@
+**QIUQ TODOS**
+
+
+
+
+
+\# Todos
+
+\[•] Scaffold Next.js App Router project in real-estate/ (configs, tsconfig, tailwind, fonts)
+
+\[ ] Install deps: next, react, framer-motion, lucide, tailwind, radix, resend, shadcn base
+
+\[ ] Set up shadcn/ui base + global styles (navy/gold tokens, glassmorphism, gradients)
+
+\[ ] Build layout + full SEO metadata + JSON-LD schemas (Org, Service, FAQ, Breadcrumb)
+
+\[ ] Build Header/nav + sticky CTA + floating WhatsApp button
+
+\[ ] Build Hero (laptop/tablet/mobile CSS mockup, floating cards, animations)
+
+\[ ] Build Trust bar + Social proof sections
+
+\[ ] Build Problem/Solution section
+
+\[ ] Build Services grid (16 premium cards)
+
+\[ ] Build Features section (dashboard mockup + checklist)
+
+\[ ] Build Why Choose qiuQ + Process timeline
+
+\[ ] Build Portfolio (6 cards) + labelled sample case study
+
+\[ ] Build Pricing (3 tiers + comparison table)
+
+\[ ] Build Testimonials slider (placeholder) + FAQ (15) + Blog preview
+
+\[ ] Build Lead magnet form + Final CTA + Footer + newsletter
+
+\[ ] Build API route for lead capture (Resend email)
+
+\[ ] Write full SEO content + metadata across sections (2000-3000 words)
+
+\[ ] Build, typecheck, verify production output
+
